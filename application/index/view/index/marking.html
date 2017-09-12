@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>面试评分</title>
+
+		<!-- Bootstrap -->
+		<link href="__CSS__/bootstrap.min.css" rel="stylesheet">
+		<link href="__CSS__/base.css" rel="stylesheet">
+		<link href="__CSS__/home-base.css" rel="stylesheet">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	</head>
+	<body>
+	{include file="public/homebase" /}
+		<!-- 内容栏 -->
+		<div class="container col-md-8 col-sm-8 col-sm-offset-3 col-md-offset-3" >
+			<h1>面试评分</h1>
+			<h2 style="color: red">当前面试组：第{:cookie('interviewGroup')}组 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				当前序号：{$student.order_id}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="{:url('Index/counter')}" target="_blank" class="btn btn-lg btn-warning"> 计数器 </a></h2>
+			<hr>
+			<div class="row">
+				<div class="col-md-2">
+					<img  class="img-responsive" src="http://jiaowu.sicau.edu.cn/photo/{$student.schoolid}.jpg">
+				</div>
+				<div class="col-md-3"><h3>姓名：{$student.name}</h3></div>
+				<div class="col-md-3"><h3>学号：{$student.schoolid}</h3></div>
+				<div class="col-md-4"><h3>班级：{$student.class}</h3></div>
+			</div>
+			<br><br>
+			<form id="form" method="post" action="{:url('index/getMark')}">
+				<!--给学生在数据库中的id-->
+				<input type="hidden" name="studentId" value="{$student.id}">
+				<div class="form-group">
+					<label for="grade"><h4>评分：<h5 style="color:red;">分值0.0~10.0，可整数可小数；多个评分之间请用 | 隔开</h5></h4></label> <br>
+					<div class="row">
+						<div class="col-sm-6">
+							<input type="text" class="form-control input-lg" name="grade" id="grade" placeholder="打分">
+						</div>
+					</div>
+					<h5 id="warning1" style="color:red;display: none">评分不能为空！</h5>
+				</div>
+				<br>
+
+				<div class="form-group">
+					<label for="remark"><h4>备注：</h4><h5 style="color:red;">比如学过那些语言，个人作品，部门，自学能力等</h5></label> <br>
+					<div class="row">
+						<div class="col-sm-6">
+							<input type="text" class="form-control input-lg" name="remark" id="remark" placeholder="备注">
+						</div>
+					</div>
+				</div>
+				<br>
+			</form>
+			<button id="submit" class="btn btn-lg btn-info"> 下一位 </button>
+		</div>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="__JS__/bootstrap.min.js"></script>
+		<script src="__JS__/home.js"></script>
+		<script>
+			$("#submit").click(function(){
+                if($("#grade").val()==""){
+					$("#warning1").css({"display":"block"});
+				}else{
+                    $("#form").submit();
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>已签到人员</title>
+
+		<!-- Bootstrap -->
+		<link href="__CSS__/bootstrap.min.css" rel="stylesheet">
+		<link href="__CSS__/base.css" rel="stylesheet">
+		<link href="__CSS__/home-base.css" rel="stylesheet">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	</head>
+	<body>
+	{include file="public/homebase" /}
+		<!-- 内容栏 -->
+		<div class="container col-md-10 col-sm-10 col-sm-offset-2 col-md-offset-2" >
+			<h1>已签到人员</h1>
+			<hr>
+			<div class="table-responsive">
+				<table class="table table-striped table-hover">
+					<thead>
+					<th>序号</th>
+					<th>姓名</th>
+					<th>学号</th>
+					<th>性别</th>
+					<th>班级</th>
+					<th>邮箱</th>
+					<th>电话</th>
+					<th>面试组别</th>
+					<th>面试官</th>
+					<th>评分</th>
+					<th>备注</th>
+					</tr>
+					</thead>
+					<tbody>
+					{foreach $students as $student}
+					<tr>
+						<td>{$student.order_id}</td>
+						<td>{$student.name}</td>
+						<td>{$student.schoolid}</td>
+						<td>{$student.sex}</td>
+						<td>{$student.class}</td>
+						<td>{$student.mail}</td>
+						<td>{$student.phone}</td>
+						<td>{$student.interview_group}</td>
+						<td>{$student.interviewer_name}</td>
+						<td>{$student.grade}</td>
+						<td>{$student.remark}</td>
+					</tr>
+					{/foreach}
+					</tbody>
+				</table>
+				{$students->render()}
+			</div>
+		</div>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="__JS__/bootstrap.min.js"></script>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="__JS__/home.js"></script>
+	</body>
+</html>

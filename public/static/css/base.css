@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Microsoft Yahei;
+}
+html, body{ margin:0; height:100%; }
+body {
+    padding-top:60px;
+    height: 100%;
+}
+.navbar{
+    background-color: ghostwhite;
+    border-bottom: lightgray;
+    opacity:0.65;
+    filter:alpha(opacity=65);
+}
+nav .container p{
+    font-size: 25px;
+}
+nav .container-fluid p{
+    font-size: 25px;
+}
