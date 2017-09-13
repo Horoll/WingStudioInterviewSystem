@@ -126,6 +126,7 @@ class Index extends Controller
         $nowNum=db('interviews')->where('name',cookie('interviewname'))->value('now_num');
         $nowNum+=1;
         if($nowNum>db('interviews')->where('name',cookie('interviewname'))->value('people_num')){
+            cookie('nowNum','OVER!');
             $this->success('面试已经完成','Index/homeIndex');
         }
         cookie('nowNum',$nowNum);
