@@ -125,10 +125,10 @@ class Index extends Controller
         //当前喊到哪个号了
         $nowNum=db('interviews')->where('name',cookie('interviewname'))->value('now_num');
         $nowNum+=1;
-        cookie('nowNum',$nowNum);
         if($nowNum>db('interviews')->where('name',cookie('interviewname'))->value('people_num')){
             $this->success('面试已经完成','Index/homeIndex');
         }
+        cookie('nowNum',$nowNum);
         db('interviews')->where('name',cookie('interviewname'))->setField('now_num',$nowNum);
         $groupId=db('interviews')->where('name',cookie('interviewname'))->value('id');
         $student=db('student')->where('group_id',$groupId)->where('order_id',$nowNum)->find();
