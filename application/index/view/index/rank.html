@@ -33,7 +33,7 @@
 					<div class="col-sm-6">
 						<select class="form-control input-lg" name="interview_group" id="interview_group">
 							{for start="1" end="$group_num+1"}
-							<option>{$i}</option>
+							<option {if condition="($interview_group == $i)"}selected = "selected"{/if} >{$i}</option>
 							{/for}
 						</select>
 					</div>

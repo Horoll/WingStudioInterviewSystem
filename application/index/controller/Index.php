@@ -124,7 +124,7 @@ class Index extends Controller
         }
         //当前喊到哪个号了
         $nowNum=db('interviews')->where('name',cookie('interviewname'))->value('now_num');
-       // $nowNum+=1;
+        $nowNum+=1;
         cookie('nowNum',$nowNum);
         if($nowNum>db('interviews')->where('name',cookie('interviewname'))->value('people_num')){
             $this->success('面试已经完成','Index/homeIndex');
@@ -176,6 +176,7 @@ class Index extends Controller
         $students = db('student')->where('interview_group',$interview_group)->order('grade desc')->select();
         $this->assign('group_num',$group_num);
         $this->assign('students',$students);
+        $this->assign('interview_group',$interview_group);
         return $this->fetch();
     }
 

@@ -44,11 +44,9 @@ CREATE TABLE `interviews` (
   `group_num` int(11) NOT NULL DEFAULT '1' COMMENT '有几个面试组',
   `group_people` int(11) NOT NULL DEFAULT '1' COMMENT '每组几个面试官',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `interviews` */
-
-insert  into `interviews`(`id`,`name`,`people_num`,`now_num`,`group_num`,`group_people`) values (1,'模拟1',0,0,3,3);
 
 /*Table structure for table `student` */
 
@@ -57,7 +55,7 @@ DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
-  `schoolid` text NOT NULL COMMENT '学号',
+  `schoolid` varchar(10) NOT NULL COMMENT '学号',
   `sex` varchar(5) NOT NULL,
   `class` varchar(20) DEFAULT NULL,
   `mail` varchar(20) DEFAULT NULL,
