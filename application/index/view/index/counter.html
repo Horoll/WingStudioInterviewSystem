@@ -31,6 +31,9 @@
 <script>
     setInterval(function () {
         $.get("{:url('Index/nowCounter')}").done(function (data) {
+        	if(data.length>3){
+        		$("h1#nowId").css({"font-size":"350px","margin-top":"20%"});
+        	}
             $("h1#nowId").text(data)
         });
     },2000);
