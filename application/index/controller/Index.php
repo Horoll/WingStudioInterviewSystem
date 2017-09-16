@@ -118,13 +118,13 @@ class Index extends Controller
         return $this->fetch();
     }
 
-    public function marking(){
+    public function marking($next=''){
         if(!cookie('interviewGroup')){
             $this->redirect('Index/chooseGroup');
         }
         //当前喊到哪个号了
         $nowNum=db('interviews')->where('name',cookie('interviewname'))->value('now_num');
-        $nowNum+=1;
+        if($next=='next') $nowNum+=1;
         if($nowNum>db('interviews')->where('name',cookie('interviewname'))->value('people_num')){
             cookie('nowNum','OVER!');
             $this->success('面试已经完成','Index/homeIndex');

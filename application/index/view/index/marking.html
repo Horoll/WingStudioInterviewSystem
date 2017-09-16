@@ -38,7 +38,7 @@
 				<div class="col-md-4"><h3>班级：{$student.class}</h3></div>
 			</div>
 			<br><br>
-			<form id="form" method="post" action="{:url('index/getMark')}">
+			<form id="form" method="post" action="{:url('index/getMark','next=next')}">
 				<!--给学生在数据库中的id-->
 				<input type="hidden" name="studentId" value="{$student.id}">
 				<div class="form-group">
